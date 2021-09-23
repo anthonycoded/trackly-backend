@@ -1,15 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("./src/models/Users");
+require("./src/models/Track");
 
 const requireAuth = require("./src/middleware/requireAuth");
 
 const authRoutes = require("./src/routes/authRoute");
+const trackRoutes = require("./src/routes/trackRoutes");
 
 const app = express();
 
 app.use(express.json());
 app.use("/auth", authRoutes);
+app.use("/tracks", trackRoutes);
 
 ///CONNECT TO DATABSE MONGODB
 const mongoUri =
